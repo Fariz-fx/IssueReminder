@@ -19,7 +19,7 @@ To use this GitHub Action, follow these steps:
 
 Before using this action, you need to set up your email integration using Azure Logic App or any other solution. Obtain the email notification URL provided by your email integration service.
 
-If you are using Azure Logic APp, then create trigger using HTTP POST method and save it, you can see an URL, you can use that by going to your GitHub Repo -> Secret and Create Repository Secret and name it ISSUE_LOGICAPP_URL and save it.
+If you are using Azure Logic App, then create a trigger using the HTTP POST method and save it, you can see an URL, you can use that by going to your GitHub Repo -> Secret and Create Repository Secret and naming it ISSUE_LOGICAPP_URL and saving it.
 
 ### Step 2: Create a workflow file
 
@@ -49,7 +49,7 @@ jobs:
                 ref: ${{ github.event.inputs.ref }}
 
             - name: Run Notify Inactive Issues GitHub Action
-              uses: your-username/your-repo-name@v1
+              uses: Fariz-fx/IssueReminder@v1.0.1
               with:
                 schedule: '*0 * * * *' # Specify the cron schedule for the action
                 consolidated_email: 'false' # Specify 'true' for consolidated email or 'false' for separate emails
@@ -89,6 +89,8 @@ The Notify Inactive Issues GitHub Action can be used in various situations, such
 ## Contributing
 
 Contributions are welcome! If you have any suggestions, feature requests, or bug reports, please open an issue or submit a pull request on the GitHub repository.
+
+### Note: Create PR for Dev Branch only not main
 
 ## License
 
