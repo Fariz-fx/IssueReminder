@@ -49,7 +49,7 @@ jobs:
                 ref: ${{ github.event.inputs.ref }}
 
             - name: Run Notify Inactive Issues GitHub Action
-              uses: Fariz-fx/IssueReminder@v1.0.1
+              uses: Fariz-fx/IssueReminder@v2
               with:
                 schedule: '*0 * * * *' # Specify the cron schedule for the action
                 consolidated_email: 'false' # Specify 'true' for consolidated email or 'false' for separate emails
