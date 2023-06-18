@@ -21,7 +21,16 @@ jobs:
     - uses: actions/stale@v5
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-issue-message: 'Stale issue message'
-        stale-pr-message: 'Stale pull request message'
+        stale-issue-message: 'We didnt see any activity in this issue and not assigned to anyone, Hence marking as no-issue-activity and adding stale label, after 7 day of no activity this issue will be closed. Make some comment or assign it to avoid closure'
+        stale-pr-message: 'We didnt see any activity in this PR and not assigned to anyone, Hence marking as no-pr-activity and adding stale label, after 7 day of no activity this PR will be closed. Make some comment or assign it to avoid closure'
         stale-issue-label: 'no-issue-activity'
+        days-before-issue-stale: 7
+        days-before-close: 7
+        days-before-pr-stale: 7
+        days-before-pr-close: 7
         stale-pr-label: 'no-pr-activity'
+        exempt-all-pr-assignees: true
+        operations-per-run: 500
+        close-issue-label: 'Auto-Close-by-Stale-Workflow'
+        close-issue-message: 'Automatically closing as no activity in this Issue by the Stale workflow'
+        close-pr-message: 'Automatically closing as no activity in this PR by the Stale workflow'
