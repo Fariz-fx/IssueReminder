@@ -1,0 +1,35 @@
+name: 'Notify Inactive Issues'
+description: 'Send email notifications(POST Request) for inactive GitHub issues'
+author: 'far'
+branding:
+  icon: 'message-square'
+  color: 'blue'
+
+inputs:
+  schedule:
+    description: 'Cron schedule pattern (e.g., "*0 * * * *")'
+    required: true
+    default: '*0 * * * *'
+  consolidated_email:
+    description: 'True if you want a single consolidated email, false for separate emails'
+    required: true
+    default: 'true'
+  updated_time:
+    description: 'Time interval for checking issue updates (e.g., "1 hour", "30 minutes", "1 day")'
+    required: true
+    default: '1 hour'
+  label_filter:
+    description: 'Filter issues by label(s) (comma-separated, case-sensitive, e.g., "bug,help wanted")'
+    required: false
+  milestone_filter:
+    description: 'Filter issues by milestone ID'
+    required: false
+
+runs:
+  using: 'composite'
+  steps:
+    - run: sudo apt-get update && sudo apt-get install -y jq curl
+      shell: bash
+    - run: ${{ github.workspace }}/check_inactive_issues.sh
+      shell: bash
+      
